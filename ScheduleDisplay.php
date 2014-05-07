@@ -5,7 +5,7 @@
  * A foundation off of which to build well-documented WordPress plugins that
  * also follow WordPress Coding Standards and PHP best practices.
  *
- * @package   Plugin_Name
+ * @package   ScheduleDisplay
  * @author    Your Name <email@example.com>
  * @license   GPL-2.0+
  * @link      http://example.com
@@ -18,7 +18,7 @@
  * Version:           1.0.0
  * Author:            @TODO
  * Author URI:        @TODO
- * Text Domain:       plugin-name-locale
+ * Text Domain:       ScheduleDisplay-locale
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
@@ -38,10 +38,10 @@ if ( ! defined( 'WPINC' ) ) {
 /*
  * @TODO:
  *
- * - replace `class-plugin-name.php` with the name of the plugin's class file
+ * - replace `class-ScheduleDisplay.php` with the name of the plugin's class file
  *
  */
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-plugin-name.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'public/class-ScheduleDisplay.php' );
 
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
@@ -49,19 +49,19 @@ require_once( plugin_dir_path( __FILE__ ) . 'public/class-plugin-name.php' );
  *
  * @TODO:
  *
- * - replace Plugin_Name with the name of the class defined in
- *   `class-plugin-name.php`
+ * - replace ScheduleDisplay with the name of the class defined in
+ *   `class-ScheduleDisplay.php`
  */
-register_activation_hook( __FILE__, array( 'Plugin_Name', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Plugin_Name', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'ScheduleDisplay', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'ScheduleDisplay', 'deactivate' ) );
 
 /*
  * @TODO:
  *
- * - replace Plugin_Name with the name of the class defined in
- *   `class-plugin-name.php`
+ * - replace ScheduleDisplay with the name of the class defined in
+ *   `class-ScheduleDisplay.php`
  */
-add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'ScheduleDisplay', 'get_instance' ) );
 
 /*----------------------------------------------------------------------------*
  * Dashboard and Administrative Functionality
@@ -70,9 +70,9 @@ add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
 /*
  * @TODO:
  *
- * - replace `class-plugin-name-admin.php` with the name of the plugin's admin file
- * - replace Plugin_Name_Admin with the name of the class defined in
- *   `class-plugin-name-admin.php`
+ * - replace `class-ScheduleDisplay-admin.php` with the name of the plugin's admin file
+ * - replace ScheduleDisplay_Admin with the name of the class defined in
+ *   `class-ScheduleDisplay-admin.php`
  *
  * If you want to include Ajax within the dashboard, change the following
  * conditional to:
@@ -85,7 +85,7 @@ add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
  */
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-plugin-name-admin.php' );
-	add_action( 'plugins_loaded', array( 'Plugin_Name_Admin', 'get_instance' ) );
+	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-ScheduleDisplay-admin.php' );
+	add_action( 'plugins_loaded', array( 'ScheduleDisplay_Admin', 'get_instance' ) );
 
 }
