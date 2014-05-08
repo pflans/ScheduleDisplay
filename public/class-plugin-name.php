@@ -2,7 +2,7 @@
 /**
  * Plugin Name.
  *
- * @package   ScheduleDisplay
+ * @package   Plugin_Name
  * @author    Your Name <email@example.com>
  * @license   GPL-2.0+
  * @link      http://example.com
@@ -14,14 +14,14 @@
  * public-facing side of the WordPress site.
  *
  * If you're interested in introducing administrative or dashboard
- * functionality, then refer to `class-ScheduleDisplay-admin.php`
+ * functionality, then refer to `class-plugin-name-admin.php`
  *
  * @TODO: Rename this class to a proper name for your plugin.
  *
- * @package ScheduleDisplay
+ * @package Plugin_Name
  * @author  Your Name <email@example.com>
  */
-class ScheduleDisplay {
+class Plugin_Name {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
@@ -33,7 +33,7 @@ class ScheduleDisplay {
 	const VERSION = '1.0.0';
 
 	/**
-	 * @TODO - Rename "ScheduleDisplay" to the name of your plugin
+	 * @TODO - Rename "plugin-name" to the name of your plugin
 	 *
 	 * Unique identifier for your plugin.
 	 *
@@ -46,7 +46,7 @@ class ScheduleDisplay {
 	 *
 	 * @var      string
 	 */
-	protected $plugin_slug = 'ScheduleDisplay';
+	protected $plugin_slug = 'plugin-name';
 
 	/**
 	 * Instance of this class.

@@ -2,7 +2,7 @@
 /**
  * Plugin Name.
  *
- * @package   ScheduleDisplay_Admin
+ * @package   Plugin_Name_Admin
  * @author    Your Name <email@example.com>
  * @license   GPL-2.0+
  * @link      http://example.com
@@ -14,14 +14,14 @@
  * administrative side of the WordPress site.
  *
  * If you're interested in introducing public-facing
- * functionality, then refer to `class-ScheduleDisplay.php`
+ * functionality, then refer to `class-plugin-name.php`
  *
  * @TODO: Rename this class to a proper name for your plugin.
  *
- * @package ScheduleDisplay_Admin
+ * @package Plugin_Name_Admin
  * @author  Your Name <email@example.com>
  */
-class ScheduleDisplay_Admin {
+class Plugin_Name_Admin {
 
 	/**
 	 * Instance of this class.
@@ -63,10 +63,10 @@ class ScheduleDisplay_Admin {
 		 *
 		 * @TODO:
 		 *
-		 * - Rename "ScheduleDisplay" to the name of your initial plugin class
+		 * - Rename "Plugin_Name" to the name of your initial plugin class
 		 *
 		 */
-		$plugin = ScheduleDisplay::get_instance();
+		$plugin = Plugin_Name::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
 		// Load admin style sheet and JavaScript.
@@ -122,7 +122,7 @@ class ScheduleDisplay_Admin {
 	 *
 	 * @TODO:
 	 *
-	 * - Rename "ScheduleDisplay" to the name your plugin
+	 * - Rename "Plugin_Name" to the name your plugin
 	 *
 	 * @since     1.0.0
 	 *
@@ -136,7 +136,7 @@ class ScheduleDisplay_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), ScheduleDisplay::VERSION );
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), Plugin_Name::VERSION );
 		}
 
 	}
@@ -146,7 +146,7 @@ class ScheduleDisplay_Admin {
 	 *
 	 * @TODO:
 	 *
-	 * - Rename "ScheduleDisplay" to the name your plugin
+	 * - Rename "Plugin_Name" to the name your plugin
 	 *
 	 * @since     1.0.0
 	 *
@@ -160,7 +160,7 @@ class ScheduleDisplay_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), ScheduleDisplay::VERSION );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Plugin_Name::VERSION );
 		}
 
 	}
