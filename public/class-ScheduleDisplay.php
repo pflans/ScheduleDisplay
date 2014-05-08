@@ -299,7 +299,7 @@ class ScheduleDisplay {
 	 *        Filters: http://codex.wordpress.org/Plugin_API#Filters
 	 *        Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
 	 *
-	 * @since    1.0.0
+	 * @since    1. 0.0  
 	 */
 	public function filter_method_name() {
 		// @TODO: Define your filter hook callback here
