@@ -1,26 +1,16 @@
 <?php
 /**
- * Plugin Name.
+ * ScheduleDisplay
  *
+ * @package   ScheduleDisplay
+ * @author    Patrick Murray <patfmurray@gmail.com>
  * @package   ScheduleDisplay_Admin
  * @author    Your Name <email@example.com>
  * @license   GPL-2.0+
- * @link      http://example.com
- * @copyright 2014 Your Name or Company Name
+ * @link      http://github.com/comrh
+ * @copyright 2014 PFM
  */
 
-/**
- * Plugin class. This class should ideally be used to work with the
- * administrative side of the WordPress site.
- *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-ScheduleDisplay.php`
- *
- * @TODO: Rename this class to a proper name for your plugin.
- *
- * @package ScheduleDisplay_Admin
- * @author  Your Name <email@example.com>
- */
 class ScheduleDisplay_Admin {
 
 	/**
@@ -56,16 +46,10 @@ class ScheduleDisplay_Admin {
 		 */
 		/* if( ! is_super_admin() ) {
 			return;
-		} */
+		} 
+                 * 
+                 */
 
-		/*
-		 * Call $plugin_slug from public plugin class.
-		 *
-		 * @TODO:
-		 *
-		 * - Rename "ScheduleDisplay" to the name of your initial plugin class
-		 *
-		 */
 		$plugin = ScheduleDisplay::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
@@ -120,11 +104,8 @@ class ScheduleDisplay_Admin {
 	/**
 	 * Register and enqueue admin-specific style sheet.
 	 *
-	 * @TODO:
-	 *
-	 * - Rename "ScheduleDisplay" to the name your plugin
-	 *
-	 * @since     1.0.0
+         *
+         * @since     1.0.0
 	 *
 	 * @return    null    Return early if no settings page is registered.
 	 */
@@ -143,11 +124,8 @@ class ScheduleDisplay_Admin {
 
 	/**
 	 * Register and enqueue admin-specific JavaScript.
-	 *
-	 * @TODO:
-	 *
-	 * - Rename "ScheduleDisplay" to the name your plugin
-	 *
+         *
+         * 
 	 * @since     1.0.0
 	 *
 	 * @return    null    Return early if no settings page is registered.
@@ -179,16 +157,10 @@ class ScheduleDisplay_Admin {
 		 *
 		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
 		 *
-		 * @TODO:
-		 *
-		 * - Change 'Page Title' to the title of your plugin admin page
-		 * - Change 'Menu Text' to the text for menu item for the plugin settings page
-		 * - Change 'manage_options' to the capability you see fit
-		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 		 */
 		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'Page Title', $this->plugin_slug ),
-			__( 'Menu Text', $this->plugin_slug ),
+			__( 'Schedule Display Admin', $this->plugin_slug ),
+			__( 'Settings', $this->plugin_slug ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )
