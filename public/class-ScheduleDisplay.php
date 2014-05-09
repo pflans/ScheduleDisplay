@@ -69,9 +69,13 @@ class ScheduleDisplay {
 		 */
 		add_action( 'init', array( $this, 'register_cpt_sdprogram' ) );
                 add_action( 'init', array( $this, 'create_taxonomies' ) );
-		add_filter( '@TODO', array( $this, 'filter_method_name' ) );
-
-	}
+                add_action('manage_posts_custom_column', 'manage_sdprogram_custom_column',10,2);
+                add_action('manage_sdprogram_posts_columns', 'manage_sdprogram_posts_columns');
+                
+                
+                add_filter( 'manage_edit-sdprogram_sortable_columns', 'sdprogram_column_register_sortable' );                
+                
+        }
 
 	/**
 	 * Return the plugin slug.
@@ -259,7 +263,8 @@ class ScheduleDisplay {
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'assets/css/public.css', __FILE__ ), array(), self::VERSION );
-	}
+                wp_enqueue_style( 'themename-style', get_stylesheet_uri(), array( 'dashicons' ), '1.0' );
+        }
 
 	/**
 	 * Register and enqueues public-facing JavaScript files.
@@ -282,31 +287,30 @@ class ScheduleDisplay {
          function register_cpt_sdprogram() {
 
                 $labels = array( 
-                    'name' => _x( 'Programs', 'sdprogram' ),
-                    'singular_name' => _x( 'Program', 'sdprogram' ),
+                    'name' => _x( 'Broadcasts', 'sdprogram' ),
+                    'singular_name' => _x( 'Broadcasts', 'sdprogram' ),
                     'add_new' => _x( 'Add New', 'sdprogram' ),
-                    'add_new_item' => _x( 'Add New Program', 'sdprogram' ),
-                    'edit_item' => _x( 'Edit Program', 'sdprogram' ),
-                    'new_item' => _x( 'New Program', 'sdprogram' ),
-                    'view_item' => _x( 'View Program', 'sdprogram' ),
-                    'search_items' => _x( 'Search Programs', 'sdprogram' ),
+                    'add_new_item' => _x( 'Add New Broadcasts', 'sdprogram' ),
+                    'edit_item' => _x( 'Edit Broadcasts', 'sdprogram' ),
+                    'new_item' => _x( 'New Broadcasts', 'sdprogram' ),
+                    'view_item' => _x( 'View Broadcasts', 'sdprogram' ),
+                    'search_items' => _x( 'Search Broadcasts', 'sdprogram' ),
                     'not_found' => _x( 'No programs found', 'sdprogram' ),
                     'not_found_in_trash' => _x( 'No programs found in Trash', 'sdprogram' ),
-                    'parent_item_colon' => _x( 'Parent Program:', 'sdprogram' ),
-                    'menu_name' => _x( 'Programs', 'sdprogram' ),
+                    'parent_item_colon' => _x( 'Parent Broadcasts:', 'sdprogram' ),
+                    'menu_name' => _x( 'Broadcasts', 'sdprogram' ),
                 );
 
                 $args = array( 
                     'labels' => $labels,
                     'hierarchical' => false,
 
-                    'supports' => array( 'title', 'editor', 'author', 'custom-fields', 'page-attributes' ),
+                    'supports' => array( 'title' ),
                     'taxonomies' => array( 'category', 'post_tag' ),
                     'public' => true,
                     'show_ui' => true,
                     'show_in_menu' => true,
-
-
+                    'menu_icon' => 'dashicons-format-audio',
                     'show_in_nav_menus' => true,
                     'publicly_queryable' => true,
                     'exclude_from_search' => false,
@@ -318,9 +322,55 @@ class ScheduleDisplay {
                 );
 
                 register_post_type( 'sdprogram', $args );
+                
+                $postID = $post->ID;
+                add_post_meta($postID, 'sd_runningtime', 'Running Time', true);
+
             }
           
+            
 
+        function manage_sdprogram_posts_columns($post_columns) {
+            $post_columns = array(
+                'cb' => $post_columns['cb'],
+                'airdate' => 'Date',
+                'weekday' => 'Weekday',
+                'airtime' => 'Time',
+                'seriesname' => 'Series Name',
+                'episodename' => 'Episode Name',
+                'runningtime' => 'Running Time',
+                'program' => 'Broadcasts',
+                'orgdate' => 'Original Broadcast Date'
+                );
+            return $post_columns;
+        }
+        
+       
+        function manage_sdprogram_custom_column($column_key,$post_id) {
+            global $pagenow;
+            $post = get_post($post_id);
+            if ($post->post_type=='sdprogram' && is_admin() && $pagenow=='edit.php')  {
+                echo ( get_post_meta($post_id,$column_key,true) ) ? get_post_meta($post_id,$column_key,true) : "Undefined";
+            }
+        }
+
+ 
+        function sdprogram_column_register_sortable( $post_columns ) {
+            $post_columns = array(
+                'cb' => $post_columns['cb'],
+                'airdate' => 'Date',
+                'weekday' => 'Weekday',
+                'airtime' => 'Time',
+                'seriesname' => 'Series Name',
+                'episodename' => 'Episode Name',
+                'runningtime' => 'Running Time',
+                'program' => 'Broadcasts',
+                'orgdate' => 'Original Broadcast Date'
+                );
+
+            return $post_columns;
+        }
+        
 	/**
 	 * NOTE:  Filters are points of execution in which WordPress modifies data
 	 *        before saving it or sending it to the browser.
