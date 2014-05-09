@@ -70,7 +70,7 @@ class ScheduleDisplay_Admin {
 		 * Read more about actions and filters:
 		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		add_action( '@TODO', array( $this, 'action_method_name' ) );
+		add_action( 'admin_init', array( $this, 'delegate_custom_roles' ) );
 		add_filter( '@TODO', array( $this, 'filter_method_name' ) );
 
 	}
@@ -218,5 +218,21 @@ class ScheduleDisplay_Admin {
 	public function filter_method_name() {
 		// @TODO: Define your filter hook callback here
 	}
+        
+        public function delegate_custom_roles() {
+            /* Get the administrator role. */
+            $role =& get_role( 'administrator' );
+
+            /* If the administrator role exists, add required capabilities for the plugin. */
+            if ( !empty( $role ) ) {
+
+                    $role->add_cap( 'manage_sdprograms' );
+                    $role->add_cap( 'create_sdprograms' );
+                    $role->add_cap( 'edit_sdprograms' );
+            }
+	}
+        
+        
+        
 
 }
