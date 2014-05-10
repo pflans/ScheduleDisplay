@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  *----------------------------------------------------------------------------*/
 
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-ScheduleDisplay.php' );
-
+require_once( plugin_dir_path( __FILE__ ) . 'includes/cmb-functions.php' );
 
 register_activation_hook( __FILE__, array( 'ScheduleDisplay', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'ScheduleDisplay', 'deactivate' ) );

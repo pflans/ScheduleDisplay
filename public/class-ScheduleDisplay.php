@@ -68,13 +68,6 @@ class ScheduleDisplay {
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
 		add_action( 'init', array( $this, 'register_cpt_sdprogram' ) );
-                add_action( 'init', array( $this, 'create_taxonomies' ) );
-                add_action('manage_posts_custom_column', 'manage_sdprogram_custom_column',10,2);
-                add_action('manage_sdprogram_posts_columns', 'manage_sdprogram_posts_columns');
-                
-                
-                add_filter( 'manage_edit-sdprogram_sortable_columns', 'sdprogram_column_register_sortable' );                
-                
         }
 
 	/**
@@ -284,7 +277,7 @@ class ScheduleDisplay {
 	 *
 	 * @since    1.0.0
 	 */
-         function register_cpt_sdprogram() {
+         public function register_cpt_sdprogram() {
 
                 $labels = array( 
                     'name' => _x( 'Broadcasts', 'sdprogram' ),
@@ -322,66 +315,11 @@ class ScheduleDisplay {
                 );
 
                 register_post_type( 'sdprogram', $args );
-                
-                $postID = $post->ID;
-                add_post_meta($postID, 'sd_runningtime', 'Running Time', true);
 
-            }
-          
+         }
+
             
-
-        function manage_sdprogram_posts_columns($post_columns) {
-            $post_columns = array(
-                'cb' => $post_columns['cb'],
-                'airdate' => 'Date',
-                'weekday' => 'Weekday',
-                'airtime' => 'Time',
-                'seriesname' => 'Series Name',
-                'episodename' => 'Episode Name',
-                'runningtime' => 'Running Time',
-                'program' => 'Broadcasts',
-                'orgdate' => 'Original Broadcast Date'
-                );
-            return $post_columns;
-        }
+         
+            
         
-       
-        function manage_sdprogram_custom_column($column_key,$post_id) {
-            global $pagenow;
-            $post = get_post($post_id);
-            if ($post->post_type=='sdprogram' && is_admin() && $pagenow=='edit.php')  {
-                echo ( get_post_meta($post_id,$column_key,true) ) ? get_post_meta($post_id,$column_key,true) : "Undefined";
-            }
-        }
-
- 
-        function sdprogram_column_register_sortable( $post_columns ) {
-            $post_columns = array(
-                'cb' => $post_columns['cb'],
-                'airdate' => 'Date',
-                'weekday' => 'Weekday',
-                'airtime' => 'Time',
-                'seriesname' => 'Series Name',
-                'episodename' => 'Episode Name',
-                'runningtime' => 'Running Time',
-                'program' => 'Broadcasts',
-                'orgdate' => 'Original Broadcast Date'
-                );
-
-            return $post_columns;
-        }
-        
-	/**
-	 * NOTE:  Filters are points of execution in which WordPress modifies data
-	 *        before saving it or sending it to the browser.
-	 *
-	 *        Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *        Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 * @since    1.0.0
-	 */
-	public function filter_method_name() {
-		// @TODO: Define your filter hook callback here
-	}
-
 }
