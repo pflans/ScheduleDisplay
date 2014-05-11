@@ -10,9 +10,9 @@
 
 
 function be_sample_metaboxes( $meta_boxes ) {
-    $prefix = '_cmb_'; // Prefix for all fields
+    $prefix = '_sd_'; // Prefix for all fields
     $meta_boxes['sd_metafields'] = array(
-        'id' => '',
+        'id' => 'sd_metafields',
         'title' => 'Broadcast Info',
         'pages' => array('sdprogram'), // post type
         'context' => 'normal',
@@ -20,45 +20,51 @@ function be_sample_metaboxes( $meta_boxes ) {
         'show_names' => true, // Show field names on the left
         'fields' => array(
             array(
-                    'name' => __( 'Series Name', 'cmb' ),
-                    'desc' => __( '', 'cmb' ),
+                    'name' => __( 'Series Name'),
+                    'desc' => __( ''),
                     'id'   => $prefix . 'seriesname_text',
                     'type' => 'text',
             ),
             array(
-                    'name' => __( 'Episode Name', 'cmb' ),
-                    'desc' => __( '', 'cmb' ),
+                    'name' => __( 'Episode Name'),
+                    'desc' => __( ''),
                     'id'   => $prefix . 'episodename_text',
                     'type' => 'text',
             ),
             array(
-                    'name' => __( 'Running Time', 'cmb' ),
-                    'desc' => __( '', 'cmb' ),
+                    'name' => __( 'Running Time'),
+                    'desc' => __( ''),
                     'id'   => $prefix . 'runningtime_textsmall',
                     'type' => 'text_small',
             ),  
             array(
-                    'name' => __( 'Program Number ', 'cmb' ),
-                    'desc' => __( '', 'cmb' ),
+                    'name' => __( 'Program Number '),
+                    'desc' => __( ''),
                     'id'   => $prefix . 'programnumber_textsmall',
                     'type' => 'text_small',
             ), 
             array(
-                    'name' => __( 'Airing Date', 'cmb' ),
-                    'desc' => __( 'Airing date of repeat', 'cmb' ),
-                    'id'   => $prefix . 'airdate_datetime_timestamp',
-                    'type' => 'text_datetime_timestamp',
+                    'name' => __( 'Airing Time'),
+                    'desc' => __( 'Airing date of repeat'),
+                    'id'   => $prefix . 'airtime_time',
+                    'type' => 'text_time',
             ),
             array(
-                    'name' => __( 'Original Broadcast Date', 'cmb' ),
-                    'desc' => __( 'First airing date', 'cmb' ),
-                    'id'   => $prefix . 'orgdate_textdate_timestamp',
+                    'name' => __( 'Airing Date'),
+                    'desc' => __( 'Airing date of repeat'),
+                    'id'   => $prefix . 'airdate_textdate_timestamp',
                     'type' => 'text_date_timestamp',
+            ),
+            array(
+                    'name' => __( 'Original Broadcast Date'),
+                    'desc' => __( 'First airing date'),
+                    'id'   => $prefix . 'orgdate_textsmall',
+                    'type' => 'text_small',
                     // 'timezone_meta_key' => $prefix . 'timezone', // Optionally make this field honor the timezone selected in the select_timezone specified above
             ),
             array(
-                    'name' => __( 'Weekday', 'cmb' ),
-                    'desc' => __( '', 'cmb' ),
+                    'name' => __( 'Weekday'),
+                    'desc' => __( ''),
                     'id'   => $prefix . 'weekday_textsmall',
                     'type' => 'text_small',
             ),  

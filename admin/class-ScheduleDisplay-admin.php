@@ -71,8 +71,8 @@ class ScheduleDisplay_Admin {
 		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
 		add_action( 'admin_init', array( $this, 'delegate_custom_roles' ) );
-		add_filter( '@TODO', array( $this, 'filter_method_name' ) );
-
+             
+	
 	}
 
 	/**
@@ -233,7 +233,9 @@ class ScheduleDisplay_Admin {
 	}
         
         
-      
+
+
+       
         
 
 }
