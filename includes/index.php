@@ -29,6 +29,7 @@ function sd_shortcode() {
             <h2>Now Playing & Coming Up</h2>
             <table>';
                 foreach ( $postslist as $post ) :
+                    
                    $idstor = $post->ID;
                    $programTime = get_post_meta( $idstor, '_sd_airdate_textdate_timestamp', true);
                    $SeriesName = get_post_meta( $idstor, '_sd_seriesname_text', true);
@@ -41,6 +42,7 @@ function sd_shortcode() {
                             <td class="programOrgBroadcast">%s</td>
                             <td class="programTitle">%s</td>
                         </tr>';
+                   
                    $new_string = sprintf($default_string, gmdate("h:i A", $programTime), $SeriesName, $programOrgBroadcast, $programTitle);
                    $return_string .= $new_string;
                 endforeach;                     
