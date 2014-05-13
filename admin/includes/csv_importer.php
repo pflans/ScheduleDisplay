@@ -275,8 +275,8 @@ class sdCSVImporterPlugin {
         $airtime = sprintf( '%04s', $airtime ); // Add leading zero
         $airtime = substr_replace($airtime, ':', 2, 0); // Correctly format to 24:00 
        // $airtime = date( 'g:i A' ,$airtime); // Format to display
-        $date = $data['Date'];
-        $datetime = $date.' '.$airtime;
+        $date = $data['Date']; // Get the date string
+        $datetime = $date.' '.$airtime; // Combine for a string of date & time (00/00/0000 24:00)
         
         if (convert_chars($data['Episode Name'] != '')){                    
             // create!
