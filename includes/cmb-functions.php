@@ -44,16 +44,10 @@ function be_sample_metaboxes( $meta_boxes ) {
                     'type' => 'text_small',
             ), 
             array(
-                    'name' => __( 'Airing Time'),
-                    'desc' => __( 'Airing date of repeat'),
-                    'id'   => $prefix . 'airtime_time',
-                    'type' => 'text_time',
-            ),
-            array(
                     'name' => __( 'Airing Date'),
                     'desc' => __( 'Airing date of repeat'),
                     'id'   => $prefix . 'airdate_textdate_timestamp',
-                    'type' => 'text_date_timestamp',
+                    'type' => 'text_datetime_timestamp',
             ),
             array(
                     'name' => __( 'Original Broadcast Date'),

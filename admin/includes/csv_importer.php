@@ -51,6 +51,7 @@ class sdCSVImporterPlugin {
 
     var $log = array();
 
+    var $timestorage = 0;
     /**
      * Determine value of option $name from database, $default value or $params,
      * save it to the db if needed and return it.
@@ -244,7 +245,7 @@ class sdCSVImporterPlugin {
 
     function create_post($data, $options) {
         extract($options);
-
+        global $timestorage;
         $data = array_merge($this->defaults, $data);
         $type = 'sdprogram';
         $valid_type = (function_exists('post_type_exists') &&
@@ -263,34 +264,41 @@ class sdCSVImporterPlugin {
             
         );
 
-        
-        $airtime = '0000';
         if ($data['Time (Eastern)'] != ''){
             $airtime = $data['Time (Eastern)'];
-        } 
+            $timestorage = $airtime;
+        } else {
+            $airtime = $timestorage;
+        }
+
         
         $airtime = sprintf( '%04s', $airtime ); // Add leading zero
         $airtime = substr_replace($airtime, ':', 2, 0); // Correctly format to 24:00 
-        $airtime = date( 'g:i A' ,$airtime); // Format to display
+       // $airtime = date( 'g:i A' ,$airtime); // Format to display
+        $date = $data['Date'];
+        $datetime = $date.' '.$airtime;
         
-        // create!
-        $id = wp_insert_post($new_post);
-        
-        add_post_meta($id, '_sd_seriesname_text' , convert_chars($data['Series Name']), true);
-        add_post_meta($id, '_sd_episodename_text' , convert_chars($data['Episode Name']), true);
-        add_post_meta($id, '_sd_runningtime_textsmall' , convert_chars($data['Running Time']), true);
-        add_post_meta($id, '_sd_programnumber_textsmall' , convert_chars($data['Program #']), true);
-        add_post_meta($id, '_sd_airtime_time' , $airtime, true);
-        add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($data['Date']), true);
-        add_post_meta($id, '_sd_orgdate_textsmall' , convert_chars($data['Original Broadcast Date']), true);
-        add_post_meta($id, '_sd_weekday_textsmall' , convert_chars($data['Weekday']), true);
+        if (convert_chars($data['Episode Name'] != '')){                    
+            // create!
+            $id = wp_insert_post($new_post);
+
+            add_post_meta($id, '_sd_seriesname_text' , convert_chars($data['Series Name']), true);
+            add_post_meta($id, '_sd_episodename_text' , convert_chars($data['Episode Name']), true);
+            add_post_meta($id, '_sd_runningtime_textsmall' , convert_chars($data['Running Time']), true);
+            add_post_meta($id, '_sd_programnumber_textsmall' , convert_chars($data['Program #']), true);
+            add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($datetime), true);
+            add_post_meta($id, '_sd_orgdate_textsmall' , convert_chars($data['Original Broadcast Date']), true);
+            add_post_meta($id, '_sd_weekday_textsmall' , $datetime, true);
 
 
-       if ('page' !== $type && !$id) {
-            // cleanup new categories on failure
-            foreach ($cats['cleanup'] as $c) {
-                wp_delete_term($c, 'category');
+            if ('page' !== $type && !$id) {
+                // cleanup new categories on failure
+                foreach ($cats['cleanup'] as $c) {
+                    wp_delete_term($c, 'category');
+                }
             }
+        } else {
+            $id = 0;
         }
         return $id;
     }
