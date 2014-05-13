@@ -24,11 +24,29 @@ function sd_shortcode() {
     
     $postslist = get_posts( $args );
     
-    foreach ( $postslist as $post ) :   
-        $return_string .= get_the_title($post->ID); 
-        $return_string .= '-';
-    endforeach; 
-    
+    $return_string .= '
+        <div class="programSchedule">
+            <h2>Now Playing & Coming Up</h2>
+            <table>';
+                foreach ( $postslist as $post ) :
+                   $idstor = $post->ID;
+                   $programTime = get_post_meta( $idstor, '_sd_airdate_textdate_timestamp', true);
+                   $SeriesName = get_post_meta( $idstor, '_sd_seriesname_text', true);
+                   $programOrgBroadcast = get_post_meta( $idstor, '_sd_orgdate_textsmall', true);
+                   $programTitle = get_post_meta( $idstor, '_sd_episodename_text', true);
+                   $default_string = '     
+                        <tr>
+                            <td class="programTime">%s</td>
+                            <td class="seriesName">%s</td>
+                            <td class="programOrgBroadcast">%s</td>
+                            <td class="programTitle">%s</td>
+                        </tr>';
+                   $new_string = sprintf($default_string, gmdate("h:i A", $programTime), $SeriesName, $programOrgBroadcast, $programTitle);
+                   $return_string .= $new_string;
+                endforeach;                     
+    $return_string .= '            
+            </table>
+           </div>';
     
 
    return $return_string;  
