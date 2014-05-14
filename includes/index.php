@@ -3,7 +3,7 @@
 
 function sd_shortcode() {
     
-    $currentstamp = current_time( 'timestamp', 0 );
+    $currentstamp = (current_time( 'timestamp', 0 ) - 1800); // subtract half an hour
     
     $args = array(
 	'post_type' => 'sdprogram',

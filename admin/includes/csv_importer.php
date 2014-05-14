@@ -281,19 +281,21 @@ class sdCSVImporterPlugin {
             
         );
 
+		/*	
+		*** Code that deals with a date format 0:00-24:00 ***
         if ($data['Time (Eastern)'] != ''){
             $airtime = $data['Time (Eastern)'];
             $timestorage = $airtime;
         } else {
             $airtime = $timestorage;
         }
-
-        
         $airtime = sprintf( '%04s', $airtime ); // Add leading zero
         $airtime = substr_replace($airtime, ':', 2, 0); // Correctly format to 24:00 
        // $airtime = date( 'g:i A' ,$airtime); // Format to display
         $date = $data['Date']; // Get the date string
         $datetime = $date.' '.$airtime; // Combine for a string of date & time (00/00/0000 24:00)
+        */
+        $airdatetime = $data['Date'].' '.$data['Time (Eastern)'];
         
         if (convert_chars($data['Episode Name'] != '')){                    
             // create!
@@ -303,7 +305,7 @@ class sdCSVImporterPlugin {
             add_post_meta($id, '_sd_episodename_text' , convert_chars($data['Episode Name']), true);
             add_post_meta($id, '_sd_runningtime_textsmall' , convert_chars($data['Running Time']), true);
             add_post_meta($id, '_sd_programnumber_textsmall' , convert_chars($data['Program #']), true);
-            add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($datetime), true);
+            add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($airdatetime), true);
             add_post_meta($id, '_sd_orgdate_textsmall' , convert_chars($data['Original Broadcast Date']), true);
             add_post_meta($id, '_sd_weekday_textsmall' , convert_chars($data['Weekday']), true);
 
