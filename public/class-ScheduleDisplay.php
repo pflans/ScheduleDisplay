@@ -22,10 +22,6 @@ class ScheduleDisplay {
 	const VERSION = '1.0.0';
 
 	/**
-	 * @TODO - Rename "plugin-name" to the name of your plugin
-	 *
-	 * Unique identifier for your plugin.
-	 *
 	 *
 	 * The variable name is used as the text domain when internationalizing strings
 	 * of text. Its value should match the Text Domain file header in the main

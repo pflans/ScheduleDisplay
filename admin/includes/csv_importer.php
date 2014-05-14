@@ -123,12 +123,28 @@ class sdCSVImporterPlugin {
 			<input name="csv_import" id="csv_import" type="file" value="" aria-required="true" /></p>
 			<p class="submit"><input type="submit" class="button" name="submit" value="Import" /></p>
 	</form>
-	<h2>Schedule Display</h2>
-	<p>Once custom taxonomies are set up in your theme's functions.php file or by using a 3rd party plugin, <code>csv_ctax_{taxonomy_name}</code> columns can be used to assign imported data to the taxonomies.</p>
-
-	<h3>Non-hierarchical Taxonomies</h3>
-	<p>The syntax for non-hierarchical taxonomies is straightforward and is essentially the same as the <code>csv_post_tags</code> syntax.</p>
-
+	<h1>Schedule Display</h1>
+        <br>
+        <h3>Directions</h3>
+        <p>Starting with an Excel file, open Excel and go to File -> Save As and make sure the Format is <code>Comma Separate Values (.csv)</code>. Save this file to your computer.</p>
+        <p>Using the upload button above, select the <code>.CSV </code>file that was exported from Excel and import it into Wordpress. This will create new posts in the Broadcast tab 
+            with each individual program. Any empty feeds in the Excel file will be left empty during the import. Any posts imported without names will be skipped.</p>
+        <p>Feel free to edit any of the posts under the Broadcast tab if the import did not completely parse the information correctly.</p>
+        <p>The "import posts as drafts" button can be used to import with the post status "draft" instead of "published".</p>
+        <h3>Using the plugin in themes</h3>
+        <p>The schedule can be included in any post using the shortcode <code>[scheduledisplay]</code></p>
+        <h3>Problems?</h3>
+        <p>If the importer fails to import any posts or skips a large number usually the cause is a malformed .CSV file. Try a earlier file that worked and if that is successful check 
+            for differences with the new file. The importer is set up to use very specific rules! A change to the format of the Excel file will most likely require updates to the code.</p>
+        <br>
+        <br>
+        <br>
+        <ul>
+            <li>Patrick Murray</li>
+            <li><a href="mailto:patfmurray@gmail.com" style="text-decoration: none;">patfmurray@gmail.com</a></li>
+            <li><a href="http://www.github.com/comrh" style="text-decoration: none;">github.com/comrh</a></li>
+        </ul>
+        
 </div><!-- end wrap -->
 
 <?php

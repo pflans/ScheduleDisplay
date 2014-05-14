@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       ScheduleDisplay
  * Plugin URI:        http://github.com/comrh/ScheduleDisplay
- * Description:       @TODO
+ * Description:       Used to upload and display CSV to the frontend as a schedule
  * Version:           1.0.0
  * Author:            Patrick Murray
  * Author URI:        http://github.com/comrh/
