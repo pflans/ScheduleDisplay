@@ -40,6 +40,8 @@ Uploading in WordPress Dashboard
 
 == Plugins Used ==
 
-[WordPress-Plugin-Boilerplate] (https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate)
-[Custom-Metaboxes-and-Fields-for-WordPress] (https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress)
-[csv-importer] (https://github.com/FindingSimple/csv-importer)
+[WordPress-Plugin-Boilerplate] (http://github.com/tommcfarlin/WordPress-Plugin-Boilerplate)
+[Custom-Metaboxes-and-Fields-for-WordPress] (http://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress)
+[csv-importer] (http://github.com/FindingSimple/csv-importer)
+[WordPress-GitHub-Plugin-Updater] (https://github.com/jkudish/WordPress-GitHub-Plugin-Updater)
+~Current Version:1.4~
