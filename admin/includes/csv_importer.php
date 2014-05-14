@@ -132,11 +132,16 @@ class sdCSVImporterPlugin {
         <p>Feel free to edit any of the posts under the Broadcast tab if the import did not completely parse the information correctly.</p>
         <p>The "import posts as drafts" button can be used to import with the post status "draft" instead of "published".</p>
         <h3>Using the plugin in themes</h3>
-        <p>The schedule can be included in any post using the shortcode <code>[scheduledisplay]</code></p>
+        <p>The schedule can be included in any post using the shortcode <code>[scheduledisplay]</code>. This will show 5 shows, starting from two hours before the current time.</p>
+        <p>The full day's schedule can be included using the shortcode <code>[scheduledisplay_full]</code>. This will show the entire day's schedule.</p>
         <h3>Problems?</h3>
         <p>If the importer fails to import any posts or skips a large number usually the cause is a malformed .CSV file. Try a earlier file that worked and if that is successful check 
             for differences with the new file. The importer is set up to use very specific rules! A change to the format of the Excel file will most likely require updates to the code.
             If the outputted schedule seems like it is too far ahead in time, make sure the Time Zone is set correctly in the Wordpress settings.</p>
+        <p>
+        	The importer can take a little while depending on how many rows there are to import. 300 rows seems to take about 10-20 seconds but could be longer based on connection.
+        	If the importer hangs and doesn't import, one solution is to break the import up into subfiles of fewer rows and try importing them seperately.
+        </p>
         <br>
         <br>
         <br>
