@@ -135,7 +135,8 @@ class sdCSVImporterPlugin {
         <p>The schedule can be included in any post using the shortcode <code>[scheduledisplay]</code></p>
         <h3>Problems?</h3>
         <p>If the importer fails to import any posts or skips a large number usually the cause is a malformed .CSV file. Try a earlier file that worked and if that is successful check 
-            for differences with the new file. The importer is set up to use very specific rules! A change to the format of the Excel file will most likely require updates to the code.</p>
+            for differences with the new file. The importer is set up to use very specific rules! A change to the format of the Excel file will most likely require updates to the code.
+            If the outputted schedule seems like it is too far ahead in time, make sure the Time Zone is set correctly in the Wordpress settings.</p>
         <br>
         <br>
         <br>

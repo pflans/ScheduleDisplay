@@ -4,7 +4,7 @@
 function sd_shortcode() {
     
     $currentstamp = current_time( 'timestamp', 0 );
-    date_default_timezone_set($vartime);
+    
     $args = array(
 	'post_type' => 'sdprogram',
         'posts_per_page' => 5,
