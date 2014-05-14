@@ -68,6 +68,10 @@ class ScheduleDisplay {
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
 		add_action( 'init', array( $this, 'register_cpt_sdprogram' ) );
+                add_filter( 'manage_edit-sdprogram_columns', array( $this, 'set_custom_edit_sdprogram_columns' ));
+                add_action( 'manage_sdprogram_posts_custom_column' , array( $this, 'custom_sdprogram_column'), 10, 2 );
+ 
+        
         }
 
 	/**
@@ -318,8 +322,69 @@ class ScheduleDisplay {
 
          }
 
-            
          
-            
+          
+
+        function set_custom_edit_sdprogram_columns($columns) {
+            unset( $columns['categories'] );
+            unset( $columns['tags'] );
+            unset( $columns['date'] );
+            $columns['_sd_weekday_textsmall'] = __( 'Weekday', '' );;
+            $columns['_sd_airdate_textdate_timestamp'] = __( 'Date', '' );;
+            $columns['_sd_seriesname_text'] = __( 'Series Name', '' );;
+            $columns['_sd_episodename_text'] = __( 'Episode Name', '' );;
+            $columns['_sd_runningtime_textsmall'] = __( 'Running Time', '' );;
+            $columns['_sd_programnumber_textsmall'] = __( 'Broadcasts', '' );;
+            $columns['_sd_orgdate_textsmall'] = __( 'Original Broadcast Date', '' );;  
+            return $columns;
+        }
+
+        function custom_sdprogram_column( $column, $post_id ) {
+            switch ( $column ) {
+                case '_sd_airdate_textdate_timestamp':
+                    $value = get_post_meta( $post_id , '_sd_airdate_textdate_timestamp' , true );
+                    if( ! empty( $value ) ) {
+                        echo gmdate("F j, Y, H:i:s", $value);
+                    } 
+                    break;
+                case '_sd_seriesname_text':
+                    $value = get_post_meta( $post_id , '_sd_seriesname_text' , true );
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    } 
+                    break;
+                case '_sd_episodename_text':
+                    $value = get_post_meta( $post_id , '_sd_episodename_text' , true );
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    }                     
+                    break;
+                case '_sd_runningtime_textsmall':
+                    $value = get_post_meta( $post_id , '_sd_runningtime_textsmall' , true );
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    }                     
+                    break;
+                case '_sd_programnumber_textsmall':
+                    $value = get_post_meta( $post_id , '_sd_programnumber_textsmall' , true );
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    }                     
+                    break;
+                case '_sd_orgdate_textsmall':
+                    $value = get_post_meta( $post_id , '_sd_orgdate_textsmall' , true );  
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    }                     
+                    break;
+                case '_sd_weekday_textsmall':
+                    $value = get_post_meta( $post_id , '_sd_weekday_textsmall' , true );  
+                    if( ! empty( $value ) ) {
+                        echo $value;
+                    }                     
+                    break;
+            }
+        }
+         
         
 }

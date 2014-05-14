@@ -288,7 +288,7 @@ class sdCSVImporterPlugin {
             add_post_meta($id, '_sd_programnumber_textsmall' , convert_chars($data['Program #']), true);
             add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($datetime), true);
             add_post_meta($id, '_sd_orgdate_textsmall' , convert_chars($data['Original Broadcast Date']), true);
-            add_post_meta($id, '_sd_weekday_textsmall' , $datetime, true);
+            add_post_meta($id, '_sd_weekday_textsmall' , convert_chars($data['Weekday']), true);
 
 
             if ('page' !== $type && !$id) {
