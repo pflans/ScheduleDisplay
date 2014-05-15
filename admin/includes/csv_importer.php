@@ -301,6 +301,7 @@ class sdCSVImporterPlugin {
         $datetime = $date.' '.$airtime; // Combine for a string of date & time (00/00/0000 24:00)
         */
         $airdatetime = $data['Date'].' '.$data['Time (Eastern)'];
+       
         
         if (convert_chars($data['Episode Name'] != '')){                    
             // create!
@@ -310,6 +311,7 @@ class sdCSVImporterPlugin {
             add_post_meta($id, '_sd_episodename_text' , convert_chars($data['Episode Name']), true);
             add_post_meta($id, '_sd_runningtime_textsmall' , convert_chars($data['Running Time']), true);
             add_post_meta($id, '_sd_programnumber_textsmall' , convert_chars($data['Program #']), true);
+            date_default_timezone_set("UTC"); 
             add_post_meta($id, '_sd_airdate_textdate_timestamp' , strtotime($airdatetime), true);
             add_post_meta($id, '_sd_orgdate_textsmall' , convert_chars($data['Original Broadcast Date']), true);
             add_post_meta($id, '_sd_weekday_textsmall' , convert_chars($data['Weekday']), true);

@@ -15,7 +15,7 @@
  * Plugin Name:       ScheduleDisplay
  * Plugin URI:        http://github.com/comrh/ScheduleDisplay
  * Description:       Used to upload and display CSV to the frontend as a schedule
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Patrick Murray
  * Author URI:        http://github.com/comrh/
  * Text Domain:       ScheduleDisplay-locale

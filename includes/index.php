@@ -91,7 +91,8 @@ function sddisplay_shortcode() {
 
     $return_string .= '<div class="programSchedule_full">';
     $return_string .= '<h5>';
-    $return_string .= gmdate("F j, Y", $start);
+    date_default_timezone_set("America/New_York"); 
+    $return_string .= date("F j, Y", $start);
     $return_string .= '</h5>
     				   <h6>(all times Eastern - all start times approximate)</h6>
                        <table>
